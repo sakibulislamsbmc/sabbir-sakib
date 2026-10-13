@@ -1,0 +1,6 @@
+{
+  "name": "Sabbir Sakib",
+  "description": "Personal website, portfolio, courses, and educational content inspired by 10 Minute School.",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
