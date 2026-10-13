@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradients -->
+    <radialGradient id="wa-bg-glow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#022c22" stop-opacity="0.85" />
+      <stop offset="45%" stop-color="#041f1a" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#020f0c" />
+    </radialGradient>
+    <radialGradient id="wa-emerald-orb" cx="75%" cy="40%" r="45%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#047857" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="wa-cyan-orb" cx="28%" cy="65%" r="40%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#0e7490" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Linear Gradients for UI & Geometry -->
+    <linearGradient id="wa-grid-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0" />
+      <stop offset="60%" stop-color="#10b981" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.25" />
+    </linearGradient>
+
+    <linearGradient id="wa-code-grad" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="40%" stop-color="#34d399" />
+      <stop offset="70%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="wa-glass-card" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02" />
+    </linearGradient>
+
+    <linearGradient id="wa-ide-header" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+
+    <linearGradient id="wa-cyan-laser" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0" />
+      <stop offset="45%" stop-color="#67e8f9" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="55%" stop-color="#34d399" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="wa-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="wa-heavy-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="24" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1280" height="720" fill="#020e0b" />
+  <rect width="1280" height="720" fill="url(#wa-bg-glow)" />
+  <circle cx="920" cy="300" r="420" fill="url(#wa-emerald-orb)" />
+  <circle cx="360" cy="520" r="380" fill="url(#wa-cyan-orb)" />
+
+  <!-- Isometric Cyber Grid Floor -->
+  <g opacity="0.32">
+    <path d="M 0,720 L 640,460 L 1280,720" stroke="url(#wa-grid-grad)" stroke-width="1.5" fill="none" />
+    <path d="M 0,660 L 640,460 L 1280,660" stroke="url(#wa-grid-grad)" stroke-width="1.2" fill="none" />
+    <path d="M 0,600 L 640,460 L 1280,600" stroke="url(#wa-grid-grad)" stroke-width="1" fill="none" />
+    <line x1="120" y1="720" x2="640" y2="460" stroke="#10b981" stroke-width="0.8" opacity="0.4" />
+    <line x1="280" y1="720" x2="640" y2="460" stroke="#10b981" stroke-width="0.8" opacity="0.4" />
+    <line x1="460" y1="720" x2="640" y2="460" stroke="#10b981" stroke-width="0.8" opacity="0.4" />
+    <line x1="820" y1="720" x2="640" y2="460" stroke="#10b981" stroke-width="0.8" opacity="0.4" />
+    <line x1="1000" y1="720" x2="640" y2="460" stroke="#10b981" stroke-width="0.8" opacity="0.4" />
+    <line x1="1160" y1="720" x2="640" y2="460" stroke="#10b981" stroke-width="0.8" opacity="0.4" />
+  </g>
+
+  <!-- Circuit Trace Lines & Nodes -->
+  <g opacity="0.4">
+    <path d="M 120,400 L 220,400 L 260,440 L 400,440" stroke="#34d399" stroke-width="1.5" fill="none" stroke-dasharray="6 4" />
+    <circle cx="260" cy="440" r="4" fill="#34d399" />
+    <path d="M 980,120 L 1060,120 L 1100,160 L 1200,160" stroke="#06b6d4" stroke-width="1.5" fill="none" />
+    <circle cx="1060" cy="120" r="4" fill="#06b6d4" />
+  </g>
+
+  <!-- Star Dust & Binary Particles -->
+  <g opacity="0.6">
+    <circle cx="120" cy="90" r="1.5" fill="#ffffff" />
+    <circle cx="260" cy="160" r="1.2" fill="#34d399" />
+    <circle cx="430" cy="70" r="2" fill="#ffffff" opacity="0.9" />
+    <circle cx="580" cy="190" r="1" fill="#38bdf8" />
+    <circle cx="720" cy="100" r="1.5" fill="#6ee7b7" />
+    <circle cx="840" cy="150" r="2" fill="#ffffff" />
+    <circle cx="990" cy="80" r="1.5" fill="#06b6d4" />
+    <circle cx="1140" cy="140" r="1.8" fill="#ffffff" />
+    <circle cx="1220" cy="220" r="1.2" fill="#34d399" />
+    <circle cx="160" cy="480" r="1.5" fill="#67e8f9" />
+    <circle cx="1180" cy="540" r="2" fill="#34d399" />
+  </g>
+
+  <!-- Dynamic Curved Fiber Wave (Holographic Band) -->
+  <path d="M -50,540 C 200,560 360,340 600,380 C 840,410 940,240 1340,280" 
+        stroke="url(#wa-code-grad)" stroke-width="26" stroke-linecap="round" fill="none" opacity="0.25" filter="url(#wa-glow)" />
+  <path d="M -50,540 C 200,560 360,340 600,380 C 840,410 940,240 1340,280" 
+        stroke="url(#wa-code-grad)" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.85" />
+
+  <!-- Left Hero Typography & Badges Block -->
+  <g transform="translate(80, 80)">
+    <!-- Top Pill Track & Session Badge -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="230" height="34" rx="17" fill="#10b981" fill-opacity="0.18" stroke="#10b981" stroke-width="1.2" />
+      <circle cx="18" cy="17" r="5" fill="#10b981" filter="url(#wa-glow)" />
+      <circle cx="18" cy="17" r="3" fill="#ffffff" />
+      <text x="32" y="22" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#a7f3d0" letter-spacing="1.5">
+        WEB APP &bull; FULL-STACK
+      </text>
+    </g>
+
+    <!-- Masterclass Heading -->
+    <text x="0" y="85" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#34d399" letter-spacing="4">
+      BISMAHSOFT ACADEMY MASTERCLASS
+    </text>
+
+    <!-- Main Course Title in Bold Dynamic Layered Typography -->
+    <text x="0" y="160" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="-1">
+      FULL-STACK
+    </text>
+    <text x="0" y="225" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="58" font-weight="900" fill="url(#wa-code-grad)" letter-spacing="-1">
+      WEB APP DEV
+    </text>
+    <text x="0" y="280" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#a7f3d0" letter-spacing="1">
+      &amp; CLOUD ARCHITECTURE
+    </text>
+
+    <!-- Subtitle Bullet Features -->
+    <g transform="translate(0, 320)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#6ee7b7">
+        Prototype to Production &bull; Clean Architecture &bull; Scalable SaaS
+      </text>
+      <text x="0" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#e2e8f0" opacity="0.8">
+        React 19 &bull; TypeScript &bull; Tailwind CSS &bull; Node.js APIs &bull; Cloud DB
+      </text>
+    </g>
+
+    <!-- Stat Badges Row -->
+    <g transform="translate(0, 395)">
+      <!-- Badge 1: 30+ Live Classes -->
+      <g>
+        <rect x="0" y="0" width="135" height="52" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+        <text x="16" y="24" font-family="system-ui" font-size="18" font-weight="800" fill="#ffffff">30+ Class</text>
+        <text x="16" y="42" font-family="system-ui" font-size="11" font-weight="600" fill="#34d399">Live Engineering</text>
+      </g>
+
+      <!-- Badge 2: 3 Live Projects -->
+      <g transform="translate(150, 0)">
+        <rect x="0" y="0" width="150" height="52" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+        <text x="16" y="24" font-family="system-ui" font-size="18" font-weight="800" fill="#38bdf8">3 Projects</text>
+        <text x="16" y="42" font-family="system-ui" font-size="11" font-weight="600" fill="#7dd3fc">Full SaaS Apps</text>
+      </g>
+
+      <!-- Badge 3: 4.9 Rating -->
+      <g transform="translate(315, 0)">
+        <rect x="0" y="0" width="115" height="52" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+        <text x="16" y="24" font-family="system-ui" font-size="18" font-weight="800" fill="#facc15">&#9733; 4.9/5</text>
+        <text x="16" y="42" font-family="system-ui" font-size="11" font-weight="600" fill="#fef08a">High Demand</text>
+      </g>
+    </g>
+
+    <!-- Mentor Tag -->
+    <g transform="translate(0, 485)">
+      <text x="0" y="16" font-family="system-ui" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">
+        Instructor: <tspan fill="#10b981">Sakibul Islam Sabbir</tspan> &bull; Founder @ Bismahsoft Academy
+      </text>
+    </g>
+  </g>
+
+  <!-- Right Visual 3D Composition (Holographic IDE Window & React Atomic Orbit) -->
+  <g transform="translate(860, 360)">
+    <!-- Ambient Halo Glow behind 3D elements -->
+    <circle cx="0" cy="0" r="230" fill="#10b981" fill-opacity="0.22" filter="url(#wa-heavy-glow)" />
+
+    <!-- 3D Holographic IDE Window (Floating Isometric Angle) -->
+    <g transform="rotate(-8) translate(-170, -170)">
+      <!-- Glass IDE Shell -->
+      <rect x="0" y="0" width="370" height="230" rx="22" fill="#091414" fill-opacity="0.9" stroke="#34d399" stroke-width="1.8" filter="url(#wa-glow)" />
+      
+      <!-- Window Controls Header -->
+      <rect x="0" y="0" width="370" height="38" rx="22" fill="url(#wa-ide-header)" />
+      <circle cx="22" cy="19" r="5" fill="#f43f5e" />
+      <circle cx="38" cy="19" r="5" fill="#facc15" />
+      <circle cx="54" cy="19" r="5" fill="#10b981" />
+      <text x="185" y="24" text-anchor="middle" font-family="monospace" font-size="12" fill="#94a3b8" font-weight="600">
+        App.tsx &bull; Production Ready
+      </text>
+
+      <!-- Code Line Numbers & Syntax Highlighting -->
+      <g font-family="Consolas, Monaco, monospace" font-size="13" font-weight="600">
+        <!-- Line 1 -->
+        <text x="24" y="66" fill="#64748b">1</text>
+        <text x="50" y="66" fill="#f43f5e">import</text>
+        <text x="105" y="66" fill="#ffffff">{ useState, useEffect }</text>
+        <text x="270" y="66" fill="#f43f5e">from</text>
+        <text x="310" y="66" fill="#a7f3d0">'react'</text>
+
+        <!-- Line 2 -->
+        <text x="24" y="92" fill="#64748b">2</text>
+        <text x="50" y="92" fill="#06b6d4">export const</text>
+        <text x="145" y="92" fill="#38bdf8">LaunchPlatform</text>
+        <text x="260" y="92" fill="#ffffff">= () => {</text>
+
+        <!-- Line 3 -->
+        <text x="24" y="118" fill="#64748b">3</text>
+        <text x="70" y="118" fill="#34d399">const</text>
+        <text x="115" y="118" fill="#ffffff">[status, setStatus] =</text>
+        <text x="268" y="118" fill="#facc15">useState</text>
+        <text x="325" y="118" fill="#ffffff">('🚀')</text>
+
+        <!-- Line 4 -->
+        <text x="24" y="144" fill="#64748b">4</text>
+        <text x="70" y="144" fill="#06b6d4">return</text>
+        <text x="125" y="144" fill="#ffffff">&lt;</text>
+        <text x="135" y="144" fill="#38bdf8">CloudEngine</text>
+        <text x="235" y="144" fill="#a7f3d0">scale="auto"</text>
+        <text x="325" y="144" fill="#ffffff">/&gt;</text>
+
+        <!-- Line 5 -->
+        <text x="24" y="170" fill="#64748b">5</text>
+        <text x="50" y="170" fill="#ffffff">};</text>
+      </g>
+
+      <!-- Success Terminal Bar at Bottom -->
+      <g transform="translate(14, 185)">
+        <rect x="0" y="0" width="342" height="32" rx="8" fill="#042f2e" stroke="#14b8a6" stroke-width="1" />
+        <circle cx="16" cy="16" r="4" fill="#10b981" />
+        <text x="28" y="20" font-family="monospace" font-size="11" fill="#5eead4" font-weight="700">
+          Build Succeeded &bull; Deployed to Edge Cloud in 1.4s
+        </text>
+      </g>
+    </g>
+
+    <!-- 3D React Atom Orbital Rings (Center-Right Floating) -->
+    <g transform="translate(60, 50)">
+      <!-- Core Nucleus -->
+      <circle cx="0" cy="0" r="14" fill="#06b6d4" filter="url(#wa-glow)" />
+      <circle cx="0" cy="0" r="6" fill="#ffffff" />
+
+      <!-- Orbit 1 -->
+      <ellipse cx="0" cy="0" rx="70" ry="24" fill="none" stroke="#38bdf8" stroke-width="3" opacity="0.9" filter="url(#wa-glow)" />
+      <circle cx="65" cy="8" r="4" fill="#ffffff" />
+
+      <!-- Orbit 2 -->
+      <ellipse cx="0" cy="0" rx="70" ry="24" transform="rotate(60)" fill="none" stroke="#34d399" stroke-width="3" opacity="0.85" filter="url(#wa-glow)" />
+      <circle cx="-55" cy="18" r="4" fill="#ffffff" />
+
+      <!-- Orbit 3 -->
+      <ellipse cx="0" cy="0" rx="70" ry="24" transform="rotate(120)" fill="none" stroke="#a7f3d0" stroke-width="2.5" opacity="0.75" />
+      <circle cx="20" cy="-60" r="4" fill="#ffffff" />
+    </g>
+
+    <!-- 3D Floating TypeScript Shield Node -->
+    <g transform="translate(-120, 80)">
+      <polygon points="0,-28 26,-12 26,20 0,36 -26,20 -26,-12" fill="#0284c7" stroke="#38bdf8" stroke-width="2" filter="url(#wa-glow)" />
+      <text x="0" y="8" text-anchor="middle" font-family="'Space Grotesk', system-ui" font-size="22" font-weight="900" fill="#ffffff">
+        TS
+      </text>
+    </g>
+
+    <!-- Horizontal Laser Accent -->
+    <rect x="-420" y="10" width="840" height="6" fill="url(#wa-cyan-laser)" opacity="0.8" filter="url(#wa-glow)" />
+  </g>
+
+  <!-- Top Right Watermark & Year -->
+  <g transform="translate(1120, 60)">
+    <text x="0" y="0" text-anchor="end" font-family="'Space Grotesk', system-ui" font-size="13" font-weight="700" fill="#ffffff" opacity="0.4" letter-spacing="2">
+      EDITION 2026 &bull; OFFICIAL
+    </text>
+  </g>
+</svg>

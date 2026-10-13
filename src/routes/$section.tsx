@@ -8,7 +8,13 @@ export const Route = createFileRoute("/$section")({
   loader: ({ params }) => {
     const section = sections.find((s) => s.slug === params.section);
     if (!section) throw notFound();
-    return section;
+    return {
+      slug: section.slug,
+      title: section.title,
+      subtitle: section.subtitle,
+      tone: section.tone,
+      label: section.label,
+    };
   },
   head: ({ params }) => {
     const title = sections.find((s) => s.slug === params.section)?.title ?? "Page";
@@ -27,7 +33,9 @@ export const Route = createFileRoute("/$section")({
   component: SectionPage,
 });
 function SectionPage() {
-  const section = Route.useLoaderData();
+  const data = Route.useLoaderData();
+  const section = sections.find((s) => s.slug === data.slug) ?? sections[0];
+  const Icon = section.icon;
   return (
     <div className="site-shell">
       <Header />
@@ -39,7 +47,7 @@ function SectionPage() {
           </Link>
         </Button>
         <div className="page-heading">
-          <section.icon size={48} strokeWidth={1.5} />
+          <Icon size={48} strokeWidth={1.5} />
           <p className="section-eyebrow">SABBIR SAKIB / {section.title.toUpperCase()}</p>
           <h1>{section.title}</h1>
           <p>{section.subtitle}</p>

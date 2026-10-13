@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/site/header";
 import { ClassroomEnglishSection } from "@/components/site/classroom-english-section";
 import { SpaceMotionOverlay } from "@/components/site/space-motion-overlay";
-import { sections } from "@/lib/site-sections";
+import { sections, heroSections } from "@/lib/site-sections";
 import horizon from "@/assets/space-horizon.jpg";
 
 export const Route = createFileRoute("/")({
@@ -60,7 +60,7 @@ function Home() {
               A little curiosity. A new perspective. Endless possibilities.
             </p>
             <div className="category-grid">
-              {sections.map((s, i) => (
+              {heroSections.map((s, i) => (
                 <Link
                   key={s.slug}
                   to="/$section"
@@ -152,7 +152,7 @@ function Home() {
           Sabbir Sakib<span className="brand-dot">.</span>
         </Link>
         <span>© 2026 Sabbir Sakib</span>
-        <Link to="/$section" params={{ section: "contact" }}>
+        <Link to="/contact">
           Let’s connect <ArrowUpRight size={16} />
         </Link>
       </footer>

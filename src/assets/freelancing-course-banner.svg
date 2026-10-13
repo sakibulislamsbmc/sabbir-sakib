@@ -1,0 +1,268 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Gradients -->
+    <radialGradient id="fr-bg-glow" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#240c42" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#140628" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#070210" />
+    </radialGradient>
+    <radialGradient id="fr-purple-orb" cx="74%" cy="38%" r="46%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#6d28d9" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="fr-gold-orb" cx="28%" cy="65%" r="40%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25" />
+      <stop offset="60%" stop-color="#b45309" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Linear Gradients for UI & Geometry -->
+    <linearGradient id="fr-grid-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0" />
+      <stop offset="60%" stop-color="#8b5cf6" stop-opacity="0.14" />
+      <stop offset="100%" stop-color="#a78bfa" stop-opacity="0.25" />
+    </linearGradient>
+
+    <linearGradient id="fr-gold-grad" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="35%" stop-color="#a855f7" />
+      <stop offset="70%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <linearGradient id="fr-coin-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+
+    <linearGradient id="fr-globe-rim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a78bfa" />
+      <stop offset="50%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#4c1d95" />
+    </linearGradient>
+
+    <linearGradient id="fr-violet-laser" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0" />
+      <stop offset="45%" stop-color="#c4b5fd" stop-opacity="0.9" />
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="1" />
+      <stop offset="55%" stop-color="#fbbf24" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="fr-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="fr-heavy-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="24" result="glow" />
+      <feMerge>
+        <feMergeNode in="glow" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="1280" height="720" fill="#090312" />
+  <rect width="1280" height="720" fill="url(#fr-bg-glow)" />
+  <circle cx="920" cy="300" r="420" fill="url(#fr-purple-orb)" />
+  <circle cx="360" cy="520" r="380" fill="url(#fr-gold-orb)" />
+
+  <!-- Isometric Cyber Grid Floor -->
+  <g opacity="0.35">
+    <path d="M 0,720 L 640,460 L 1280,720" stroke="url(#fr-grid-grad)" stroke-width="1.5" fill="none" />
+    <path d="M 0,660 L 640,460 L 1280,660" stroke="url(#fr-grid-grad)" stroke-width="1.2" fill="none" />
+    <path d="M 0,600 L 640,460 L 1280,600" stroke="url(#fr-grid-grad)" stroke-width="1" fill="none" />
+    <line x1="120" y1="720" x2="640" y2="460" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4" />
+    <line x1="280" y1="720" x2="640" y2="460" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4" />
+    <line x1="460" y1="720" x2="640" y2="460" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4" />
+    <line x1="820" y1="720" x2="640" y2="460" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4" />
+    <line x1="1000" y1="720" x2="640" y2="460" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4" />
+    <line x1="1160" y1="720" x2="640" y2="460" stroke="#8b5cf6" stroke-width="0.8" opacity="0.4" />
+  </g>
+
+  <!-- Star Dust & Wealth Particles -->
+  <g opacity="0.65">
+    <circle cx="130" cy="95" r="1.5" fill="#ffffff" />
+    <circle cx="270" cy="170" r="1.2" fill="#c084fc" />
+    <circle cx="410" cy="75" r="2" fill="#ffffff" opacity="0.9" />
+    <circle cx="570" cy="200" r="1" fill="#facc15" />
+    <circle cx="710" cy="110" r="1.5" fill="#e9d5ff" />
+    <circle cx="860" cy="140" r="2.2" fill="#ffffff" />
+    <circle cx="970" cy="70" r="1.5" fill="#fbbf24" />
+    <circle cx="1130" cy="130" r="1.8" fill="#ffffff" />
+    <circle cx="1210" cy="230" r="1.2" fill="#c084fc" />
+    <circle cx="170" cy="450" r="1.5" fill="#fef08a" />
+    <circle cx="1160" cy="550" r="2" fill="#facc15" />
+  </g>
+
+  <!-- Dynamic Curved Gold & Violet Fiber Wave -->
+  <path d="M -50,550 C 210,570 350,350 590,385 C 830,415 930,250 1340,285" 
+        stroke="url(#fr-gold-grad)" stroke-width="26" stroke-linecap="round" fill="none" opacity="0.25" filter="url(#fr-glow)" />
+  <path d="M -50,550 C 210,570 350,350 590,385 C 830,415 930,250 1340,285" 
+        stroke="url(#fr-gold-grad)" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.85" />
+
+  <!-- Left Hero Typography & Badges Block -->
+  <g transform="translate(80, 80)">
+    <!-- Top Pill Track & Session Badge -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="240" height="34" rx="17" fill="#8b5cf6" fill-opacity="0.2" stroke="#8b5cf6" stroke-width="1.2" />
+      <circle cx="18" cy="17" r="5" fill="#a855f7" filter="url(#fr-glow)" />
+      <circle cx="18" cy="17" r="3" fill="#ffffff" />
+      <text x="32" y="22" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e9d5ff" letter-spacing="1.5">
+        GLOBAL FREELANCING &bull; LIVE
+      </text>
+    </g>
+
+    <!-- Masterclass Heading -->
+    <text x="0" y="85" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="14" font-weight="800" fill="#c084fc" letter-spacing="4">
+      BISMAHSOFT ACADEMY MASTERCLASS
+    </text>
+
+    <!-- Main Course Title in Bold Dynamic Layered Typography -->
+    <text x="0" y="160" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="-1">
+      FREELANCING
+    </text>
+    <text x="0" y="225" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="54" font-weight="900" fill="url(#fr-gold-grad)" letter-spacing="-1">
+      &amp; CLIENT MASTERY
+    </text>
+    <text x="0" y="280" font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-size="32" font-weight="800" fill="#e9d5ff" letter-spacing="1">
+      HIGH-TICKET GLOBAL DEALS
+    </text>
+
+    <!-- Subtitle Bullet Features -->
+    <g transform="translate(0, 320)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="500" fill="#fef08a">
+        Win International Remote Clients &bull; Upwork &bull; Fiverr &bull; LinkedIn Cold Pitching
+      </text>
+      <text x="0" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" fill="#e2e8f0" opacity="0.8">
+        Proven Proposal Templates &bull; Negotiation Secrets &bull; Global Wire Withdrawals
+      </text>
+    </g>
+
+    <!-- Stat Badges Row -->
+    <g transform="translate(0, 395)">
+      <!-- Badge 1: 16+ Live Classes -->
+      <g>
+        <rect x="0" y="0" width="135" height="52" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+        <text x="16" y="24" font-family="system-ui" font-size="18" font-weight="800" fill="#ffffff">16+ Class</text>
+        <text x="16" y="42" font-family="system-ui" font-size="11" font-weight="600" fill="#c084fc">Live Pitching</text>
+      </g>
+
+      <!-- Badge 2: Swipe Files -->
+      <g transform="translate(150, 0)">
+        <rect x="0" y="0" width="150" height="52" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+        <text x="16" y="24" font-family="system-ui" font-size="18" font-weight="800" fill="#fbbf24">Swipe Files</text>
+        <text x="16" y="42" font-family="system-ui" font-size="11" font-weight="600" fill="#fef08a">Winning Proposals</text>
+      </g>
+
+      <!-- Badge 3: 4.9 Rating -->
+      <g transform="translate(315, 0)">
+        <rect x="0" y="0" width="115" height="52" rx="14" fill="#ffffff" fill-opacity="0.06" stroke="#ffffff" stroke-width="1" stroke-opacity="0.15" />
+        <text x="16" y="24" font-family="system-ui" font-size="18" font-weight="800" fill="#34d399">&#9733; 4.9/5</text>
+        <text x="16" y="42" font-family="system-ui" font-size="11" font-weight="600" fill="#a7f3d0">Top Rated</text>
+      </g>
+    </g>
+
+    <!-- Mentor Tag -->
+    <g transform="translate(0, 485)">
+      <text x="0" y="16" font-family="system-ui" font-size="13" font-weight="700" fill="#ffffff" letter-spacing="0.5">
+        Instructor: <tspan fill="#a855f7">Sakibul Islam Sabbir</tspan> &bull; Founder @ Bismahsoft Academy
+      </text>
+    </g>
+  </g>
+
+  <!-- Right Visual 3D Composition (Holographic Global Network & 3D Gold Assets) -->
+  <g transform="translate(860, 360)">
+    <!-- Ambient Halo Glow behind 3D elements -->
+    <circle cx="0" cy="0" r="230" fill="#8b5cf6" fill-opacity="0.22" filter="url(#fr-heavy-glow)" />
+
+    <!-- 3D Holographic Globe Centerpiece -->
+    <g transform="translate(10, -20)">
+      <!-- Outer Atmosphere Sphere -->
+      <circle cx="0" cy="0" r="110" fill="#1e1035" stroke="url(#fr-globe-rim)" stroke-width="2.5" filter="url(#fr-glow)" />
+      
+      <!-- Latitude & Longitude Hologram Rings -->
+      <ellipse cx="0" cy="0" rx="110" ry="40" fill="none" stroke="#a78bfa" stroke-width="1.2" opacity="0.6" />
+      <ellipse cx="0" cy="0" rx="110" ry="75" fill="none" stroke="#a78bfa" stroke-width="1" opacity="0.4" />
+      <ellipse cx="0" cy="0" rx="45" ry="110" fill="none" stroke="#a78bfa" stroke-width="1.2" opacity="0.6" />
+      <line x1="0" y1="-110" x2="0" y2="110" stroke="#c084fc" stroke-width="1.5" opacity="0.7" />
+      <line x1="-110" y1="0" x2="110" y2="0" stroke="#c084fc" stroke-width="1.5" opacity="0.7" />
+
+      <!-- Global Connected City Nodes -->
+      <!-- London -->
+      <circle cx="-35" cy="-45" r="4" fill="#fbbf24" filter="url(#fr-glow)" />
+      <!-- New York -->
+      <circle cx="-65" cy="-20" r="4.5" fill="#fbbf24" filter="url(#fr-glow)" />
+      <!-- Dhaka -->
+      <circle cx="35" cy="15" r="5" fill="#34d399" filter="url(#fr-glow)" />
+      <!-- Tokyo -->
+      <circle cx="75" cy="-25" r="4" fill="#fbbf24" filter="url(#fr-glow)" />
+      <!-- Dubai -->
+      <circle cx="10" cy="-5" r="4" fill="#fbbf24" filter="url(#fr-glow)" />
+
+      <!-- Arc Flight Connections -->
+      <path d="M -65,-20 Q -50,-65 -35,-45" stroke="#fbbf24" stroke-width="2" fill="none" stroke-dasharray="4 2" />
+      <path d="M -35,-45 Q -10,-40 10,-5" stroke="#fbbf24" stroke-width="2" fill="none" stroke-dasharray="4 2" />
+      <path d="M 10,-5 Q 25,5 35,15" stroke="#34d399" stroke-width="2" fill="none" />
+      <path d="M 35,15 Q 60,-10 75,-25" stroke="#fbbf24" stroke-width="2" fill="none" stroke-dasharray="4 2" />
+    </g>
+
+    <!-- 3D Floating Upwork / 5-Star Review Plaque (Top-Left Angle) -->
+    <g transform="rotate(-10) translate(-180, -150)">
+      <rect x="0" y="0" width="200" height="90" rx="16" fill="#140628" fill-opacity="0.9" stroke="#fbbf24" stroke-width="1.5" filter="url(#fr-glow)" />
+      <text x="16" y="26" font-family="'Space Grotesk', system-ui" font-size="12" font-weight="800" fill="#fbbf24">
+        ★ ★ ★ ★ ★
+      </text>
+      <text x="16" y="48" font-family="system-ui" font-size="14" font-weight="800" fill="#ffffff">
+        $10,000+ Contract
+      </text>
+      <text x="16" y="68" font-family="system-ui" font-size="11" font-weight="600" fill="#a78bfa">
+        US Tech Client &bull; 100% Job Success
+      </text>
+    </g>
+
+    <!-- 3D Floating Golden Currency Coin ($) -->
+    <g transform="translate(90, 80) rotate(15)">
+      <!-- Outer Rim -->
+      <circle cx="0" cy="0" r="38" fill="url(#fr-coin-gold)" filter="url(#fr-glow)" />
+      <!-- Inner Rim -->
+      <circle cx="0" cy="0" r="32" fill="#78350f" stroke="#fef08a" stroke-width="2" />
+      <circle cx="0" cy="0" r="30" fill="url(#fr-coin-gold)" />
+      <text x="0" y="13" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-size="38" font-weight="900" fill="#78350f">
+        $
+      </text>
+    </g>
+
+    <!-- 3D Growth Pillar Chart (Bottom-Left) -->
+    <g transform="translate(-140, 50)">
+      <!-- Pillar 1 -->
+      <rect x="0" y="50" width="22" height="40" rx="6" fill="#6d28d9" opacity="0.8" />
+      <!-- Pillar 2 -->
+      <rect x="30" y="25" width="22" height="65" rx="6" fill="#8b5cf6" opacity="0.9" />
+      <!-- Pillar 3 -->
+      <rect x="60" y="-5" width="22" height="95" rx="6" fill="#a855f7" filter="url(#fr-glow)" />
+      <!-- Pillar 4 (Gold Top Peak) -->
+      <rect x="90" y="-35" width="22" height="125" rx="6" fill="url(#fr-coin-gold)" filter="url(#fr-glow)" />
+      <!-- Trend Arrow -->
+      <path d="M 10,45 L 40,20 L 70,-10 L 100,-40" stroke="#fef08a" stroke-width="3" fill="none" />
+      <polygon points="100,-48 108,-38 98,-36" fill="#fef08a" />
+    </g>
+
+    <!-- Horizontal Laser Accent -->
+    <rect x="-420" y="20" width="840" height="6" fill="url(#fr-violet-laser)" opacity="0.8" filter="url(#fr-glow)" />
+  </g>
+
+  <!-- Top Right Watermark & Year -->
+  <g transform="translate(1120, 60)">
+    <text x="0" y="0" text-anchor="end" font-family="'Space Grotesk', system-ui" font-size="13" font-weight="700" fill="#ffffff" opacity="0.4" letter-spacing="2">
+      EDITION 2026 &bull; OFFICIAL
+    </text>
+  </g>
+</svg>
