@@ -1105,6 +1105,19 @@ a {
   animation: spin-slow 35s linear infinite;
 }
 
+@keyframes spin-reverse-slow {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-spin-reverse-slow {
+  animation: spin-reverse-slow 35s linear infinite;
+}
+
 .animate-nebula-pulse-slow {
   animation: nebula-pulse-slow 24s ease-in-out infinite alternate;
 }

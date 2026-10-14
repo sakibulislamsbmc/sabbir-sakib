@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="100%" height="100%">
+  <defs>
+    <radialGradient id="cg-bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#0d1b2a" />
+      <stop offset="60%" stop-color="#060c14" />
+      <stop offset="100%" stop-color="#020408" />
+    </radialGradient>
+    <radialGradient id="cg-gold-glow" cx="25%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3" />
+      <stop offset="60%" stop-color="#d97706" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="cg-teal-glow" cx="75%" cy="65%" r="50%">
+      <stop offset="0%" stop-color="#0d9488" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#115e59" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="cg-title-grad" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="50%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#14b8a6" />
+    </linearGradient>
+    <linearGradient id="cg-wheel-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="33%" stop-color="#10b981" />
+      <stop offset="66%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <filter id="cg-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="0" stdDeviation="14" flood-color="#f59e0b" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1280" height="720" fill="url(#cg-bg)" />
+  <rect width="1280" height="720" fill="url(#cg-gold-glow)" />
+  <rect width="1280" height="720" fill="url(#cg-teal-glow)" />
+
+  <!-- Vectorscope & Waveform Grid Background Lines -->
+  <g opacity="0.18" stroke="#14b8a6" stroke-width="1">
+    <circle cx="640" cy="360" r="280" fill="none" stroke-dasharray="6 6" />
+    <circle cx="640" cy="360" r="200" fill="none" stroke-dasharray="4 8" />
+    <circle cx="640" cy="360" r="120" fill="none" stroke-dasharray="3 5" />
+    <line x1="360" y1="360" x2="920" y2="360" stroke-dasharray="8 6" />
+    <line x1="640" y1="80" x2="640" y2="640" stroke-dasharray="8 6" />
+  </g>
+
+  <!-- Color Wheel Decorative Triad -->
+  <g transform="translate(640, 360)">
+    <!-- Back Glow -->
+    <circle cx="0" cy="0" r="240" fill="#f59e0b" opacity="0.06" filter="blur(35px)" />
+
+    <!-- Color Wheels -->
+    <g transform="translate(-320, 0)">
+      <circle cx="0" cy="0" r="64" fill="none" stroke="url(#cg-wheel-grad)" stroke-width="4" opacity="0.6" />
+      <circle cx="0" cy="0" r="54" fill="rgba(15,23,42,0.7)" />
+      <circle cx="-12" cy="8" r="6" fill="#f43f5e" />
+      <text x="0" y="4" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="9">LIFT</text>
+    </g>
+
+    <g transform="translate(320, 0)">
+      <circle cx="0" cy="0" r="64" fill="none" stroke="url(#cg-wheel-grad)" stroke-width="4" opacity="0.6" />
+      <circle cx="0" cy="0" r="54" fill="rgba(15,23,42,0.7)" />
+      <circle cx="14" cy="-10" r="6" fill="#0ea5e9" />
+      <text x="0" y="4" text-anchor="middle" fill="#94a3b8" font-family="monospace" font-size="9">GAIN</text>
+    </g>
+
+    <!-- Category Pill -->
+    <g transform="translate(0, -170)">
+      <rect x="-140" y="-18" width="280" height="36" rx="18" fill="rgba(245,158,11,0.18)" stroke="rgba(245,158,11,0.5)" stroke-width="1.5" />
+      <text x="0" y="5" text-anchor="middle" fill="#fde68a" font-family="monospace" font-size="13" font-weight="bold" letter-spacing="2">DAVINCI &amp; LUMETRI</text>
+    </g>
+
+    <!-- Main Title Typography -->
+    <text x="0" y="-40" text-anchor="middle" fill="url(#cg-title-grad)" font-family="'Tomato Grotesk', system-ui, sans-serif" font-weight="900" font-size="80" letter-spacing="4" filter="url(#cg-glow)">
+      CINEMATIC
+    </text>
+    <text x="0" y="55" text-anchor="middle" fill="#ffffff" font-family="'Tomato Grotesk', system-ui, sans-serif" font-weight="900" font-size="74" letter-spacing="6">
+      COLOR SUITE
+    </text>
+
+    <!-- Subtitle -->
+    <text x="0" y="115" text-anchor="middle" fill="#2dd4bf" font-family="'Tomato Grotesk', system-ui, sans-serif" font-weight="600" font-size="20" letter-spacing="3">
+      STUDIO LIGHTING &bull; FILM LOOKS &bull; LUTS
+    </text>
+
+    <!-- Waveform Line in bottom frame -->
+    <g transform="translate(0, 160)">
+      <rect x="-170" y="-16" width="340" height="32" rx="16" fill="rgba(0,0,0,0.6)" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+      <path d="M -150,0 Q -110,-10 -80,5 T -20,-5 T 40,8 T 100,-8 T 150,0" fill="none" stroke="#f59e0b" stroke-width="2" />
+      <text x="0" y="5" text-anchor="middle" fill="rgba(255,255,255,0.85)" font-family="sans-serif" font-size="12" font-weight="bold">
+        ACES Color Science &bull; 10-bit Log Profiles
+      </text>
+    </g>
+  </g>
+
+  <!-- Frame Corners -->
+  <g stroke="rgba(245,158,11,0.4)" stroke-width="2" fill="none">
+    <path d="M 40,70 L 40,40 L 70,40" />
+    <path d="M 1240,70 L 1240,40 L 1210,40" />
+    <path d="M 40,650 L 40,680 L 70,680" />
+    <path d="M 1240,650 L 1240,680 L 1210,680" />
+  </g>
+</svg>
