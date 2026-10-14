@@ -1609,7 +1609,39 @@ a {
   .page-heading h1 {
     font-size: 48px;
   }
+
+  /* Mobile App Shell Optimizations */
+  html,
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    overscroll-behavior-y: contain;
+  }
+
+  .site-shell {
+    padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 72px);
+  }
+
+  /* Touch-friendly buttons and inputs */
+  button,
+  a,
+  input,
+  select {
+    touch-action: manipulation;
+  }
 }
+
+/* Utility to hide scrollbars cleanly on story trays */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1621,3 +1653,4 @@ a {
     transition: none !important;
   }
 }
+

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Header } from "@/components/site/header";
 import { ClassroomEnglishSection } from "@/components/site/classroom-english-section";
 import { SpaceMotionOverlay } from "@/components/site/space-motion-overlay";
+import { MobileStoryTray } from "@/components/site/mobile-story-tray";
 import { sections, heroSections } from "@/lib/site-sections";
 import horizon from "@/assets/space-horizon.jpg";
 
@@ -31,6 +32,8 @@ function Home() {
   return (
     <div className="site-shell">
       <Header />
+      {/* Mobile Stories Reel Tray */}
+      <MobileStoryTray />
       <main>
         <section className="space-hero">
           <img

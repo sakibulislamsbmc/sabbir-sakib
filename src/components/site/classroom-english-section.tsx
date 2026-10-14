@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import CircularCarousel, { CarouselItem } from "@/components/ui/CircularCarousel";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Video Project Thumbnails
 import video1Podcast from "@/assets/portfolio-projects/video-1-podcast.jpg";
@@ -244,7 +246,83 @@ export const DESIGN_PROJECTS: DesignProject[] = [
   },
 ];
 
+export const CAROUSEL_ITEMS: CarouselItem[] = [
+  {
+    src: project1KidsEnglish,
+    alt: "Islamic Ad Creatives & Social Media Banner Design",
+    title: "Islamic Ad Creatives",
+    subtitle: "Social Media & Banner Design",
+  },
+  {
+    src: video1Podcast,
+    alt: "Nafees Selim Podcast In As-sunnah Skill",
+    title: "Nafees Selim Podcast",
+    subtitle: "Podcast Video Editing",
+  },
+  {
+    src: project2SpokenEnglish,
+    alt: "Quran Academy Campaign & Online Learning Ads",
+    title: "Quran Academy Campaign",
+    subtitle: "Online Platform Ads",
+  },
+  {
+    src: video2GhorerBazar,
+    alt: "Promotional Ads Video for Ghorer Bazar",
+    title: "Promotional Ads Video",
+    subtitle: "Ghorer Bazar Commercial",
+  },
+  {
+    src: project3SpokenJunior,
+    alt: "Brand Carousel Posts & Multi-Slide Feed Templates",
+    title: "Brand Carousel Posts",
+    subtitle: "Social Media Grid",
+  },
+  {
+    src: video3BlenderAi,
+    alt: "Blender ads Video Editing using AI",
+    title: "Blender 3D & AI Ads",
+    subtitle: "CGI Commercial Visuals",
+  },
+  {
+    src: project4IeltsProgramme,
+    alt: "Web & App UI Showcase & Mobile Design",
+    title: "Web & App UI Showcase",
+    subtitle: "UI/UX & Mobile Design",
+  },
+  {
+    src: video4MotionGraphics,
+    alt: "Product Motion Graphics Video Reel",
+    title: "Product Motion Graphics",
+    subtitle: "3D Kinetic Reel",
+  },
+  {
+    src: project5StudyAbroad,
+    alt: "Marketing Agency Posts & 3D Promotional Ad Suite",
+    title: "Marketing Agency Posts",
+    subtitle: "3D Promotional Ad Suite",
+  },
+  {
+    src: video5Modiology,
+    alt: "Modiology Brand Product Promotion Video",
+    title: "Modiology Brand Promo",
+    subtitle: "Viral Fashion Showcase",
+  },
+  {
+    src: project6IeltsMock,
+    alt: "Corporate Content Bank & 9-Post Social Media Kit",
+    title: "Corporate Content Bank",
+    subtitle: "9-Post Social Media Kit",
+  },
+  {
+    src: video6BarnoiTvc,
+    alt: "Barnoi Lifestyle TVC Commercial Ads Project",
+    title: "Barnoi Lifestyle TVC",
+    subtitle: "Cinematic TV Commercial",
+  },
+];
+
 export function ClassroomEnglishSection() {
+  const isMobile = useIsMobile();
   const [selectedVideoId, setSelectedVideoId] = useState<string>("podcast-nafees");
   const [inlinePlayingId, setInlinePlayingId] = useState<string | null>(null);
   const [previewVideo, setPreviewVideo] = useState<VideoProject | null>(null);
@@ -663,7 +741,10 @@ export function ClassroomEnglishSection() {
           {/* ========================================================================= */}
           {/* DESIGN PORTFOLIO SECTION (Positioned neatly below the Video Section)     */}
           {/* ========================================================================= */}
-          <div className="mt-14 pt-10 border-t border-white/10 relative z-10">
+          <div
+            id="design-portfolio"
+            className="mt-14 pt-10 border-t border-white/10 relative z-10 scroll-mt-14"
+          >
             <div className="flex items-center justify-between flex-wrap gap-3 mb-6">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-lg bg-amber-500/15 border border-amber-500/30 flex items-center justify-center text-amber-400">
@@ -761,6 +842,52 @@ export function ClassroomEnglishSection() {
               <span>ভিডিও এডিটিং ও ডিজাইন প্রজেক্টের জন্য যোগাযোগ করুন</span>
               <ArrowRight className="w-5 h-5" />
             </button>
+          </div>
+        </div>
+
+        {/*
+          TRANSPARENT CIRCULAR ELEMENT HOUSING 3D CIRCULAR CAROUSEL:
+          Positioned below the shape located under the 'Design Projects' section,
+          right beneath the 'Contact us for video editing and design projects' area.
+        */}
+        <div className="mt-8 sm:mt-12 relative max-w-[1240px] mx-auto">
+          {/* Subtle Ambient Radial Glow */}
+          <div
+            className="absolute -inset-3 bg-gradient-to-r from-emerald-500/10 via-amber-500/10 to-sky-500/10 rounded-[44px] blur-3xl pointer-events-none -z-10"
+            aria-hidden="true"
+          />
+
+          {/* Transparent Circular Element Frame */}
+          <div
+            style={{
+              width: "100%",
+              height: isMobile ? "460px" : "560px",
+              position: "relative",
+            }}
+            className="rounded-[32px] sm:rounded-[44px] border border-white/10 bg-white/[0.025] backdrop-blur-2xl p-2 sm:p-5 shadow-[0_25px_60px_rgba(0,0,0,0.6)] overflow-hidden"
+          >
+            {/* Elegant Floating Badge */}
+            <div className="absolute top-4 sm:top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none">
+              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/15 text-xs text-white shadow-lg">
+                <span className="w-2 h-2 rounded-full bg-[#0ba360] animate-pulse" />
+                <span className="golden-text-shimmer font-bold uppercase tracking-widest text-[10.5px]">
+                  3D Creative Portfolio Showcase
+                </span>
+              </div>
+            </div>
+
+            <CircularCarousel
+              items={CAROUSEL_ITEMS}
+              preset="cylinder"
+              intro="rise"
+              cardWidth={isMobile ? 180 : 220}
+              aspectRatio={1}
+              gap={isMobile ? 18 : 25}
+              speed={14}
+              captions
+              fadeColor="#000000"
+              cornerRadius={14}
+            />
           </div>
         </div>
       </div>

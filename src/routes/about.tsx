@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
@@ -17,9 +17,13 @@ import {
   ExternalLink,
   X,
   FileText,
+  Printer,
+  Upload,
+  Eye,
 } from "lucide-react";
 import { Header } from "@/components/site/header";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { SpaceMotionOverlay } from "@/components/site/space-motion-overlay";
 import horizon from "@/assets/space-horizon.jpg";
 import { Icon3DGraphicDesign, Icon3DVideoEditing } from "@/components/portfolio/icons-3d";
@@ -32,15 +36,7 @@ import {
   Icon3DEducation,
   Icon3DHalalStandard,
 } from "@/components/about/about-icons-3d";
-import CircularCarousel, { CarouselItem } from "@/components/ui/CircularCarousel";
-import gdCourseThumbnail from "@/assets/gd-course-thumbnail.png";
-import videoCourseBanner from "@/assets/video-editing-course-banner.svg";
-import kineticTypographyBanner from "@/assets/kinetic-typography-banner.svg";
-import webappCourseBanner from "@/assets/webapp-course-banner.svg";
-import colorGradingBanner from "@/assets/color-grading-banner.svg";
-import freelancingCourseBanner from "@/assets/freelancing-course-banner.svg";
-import premiereProBanner from "@/assets/premiere-pro-banner.svg";
-import heroImg from "@/assets/hero.jpg";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -68,58 +64,6 @@ export const Route = createFileRoute("/about")({
   }),
   component: AboutPage,
 });
-
-// Motion design, video editing & creative items for CircularCarousel
-const CAROUSEL_ITEMS: CarouselItem[] = [
-  {
-    src: videoCourseBanner,
-    alt: "Cinematic Video Editing & Motion Graphics Showcase",
-    title: "Cinematic Video Editing",
-    subtitle: "Motion & Pacing",
-  },
-  {
-    src: gdCourseThumbnail,
-    alt: "Advanced Graphic Design with AI Tools",
-    title: "Graphic Design AI",
-    subtitle: "Brand Identity & Systems",
-  },
-  {
-    src: kineticTypographyBanner,
-    alt: "Kinetic Typography & High-Retention Edits",
-    title: "Kinetic Typography",
-    subtitle: "After Effects & VFX",
-  },
-  {
-    src: webappCourseBanner,
-    alt: "Interactive Web & UI App Development",
-    title: "Full-Stack Web App",
-    subtitle: "React & Architecture",
-  },
-  {
-    src: colorGradingBanner,
-    alt: "Cinematography, Studio Lighting & Color Grading",
-    title: "Color Grading Suite",
-    subtitle: "Cinematic LUTs & Looks",
-  },
-  {
-    src: freelancingCourseBanner,
-    alt: "Freelancing & International Client Mastery",
-    title: "Global Freelancing",
-    subtitle: "50+ Client Deals",
-  },
-  {
-    src: premiereProBanner,
-    alt: "Commercial Cutting & Timeline Post-Production",
-    title: "Premiere Pro Suite",
-    subtitle: "Commercial Cuts",
-  },
-  {
-    src: heroImg,
-    alt: "3D Motion Design & Visual Exploration",
-    title: "Visual Exploration",
-    subtitle: "Creative Lab",
-  },
-];
 
 // Day-to-Day Creative Tools
 interface ToolItem {
@@ -318,9 +262,9 @@ const EDUCATION_DATA: EducationItem[] = [
     id: "hsc",
     period: "2025 — 2027",
     degree: "HSC — Higher Secondary Certificate",
-    institution: "Govt Tolaram College",
+    institution: "Govt Tolaram College, Narayanganj",
     description:
-      "Pursuing higher secondary education with a focus on Business Studies. Active participant in cultural clubs and creative societies.",
+      "Pursuing Higher Secondary Certificate in Business Studies. Active participant in creative clubs, audiovisual workshops, and media societies.",
     accentColor: "#06b6d4",
   },
   {
@@ -329,8 +273,17 @@ const EDUCATION_DATA: EducationItem[] = [
     degree: "SSC — Secondary School Certificate",
     institution: "TalukderPara Govt Secondary High School",
     description:
-      "Completed secondary education with distinct academic performance. Built a strong foundation in creative arts and computer science.",
+      "Completed secondary school certificate with distinction (GPA 5.00). Built solid foundational skills in computer science, design principles, and visual communications.",
     accentColor: "#10b981",
+  },
+  {
+    id: "diploma-motion",
+    period: "2023 — 2024",
+    degree: "Diploma in Commercial Motion Design & Post-Production",
+    institution: "Digital Media Arts Institute",
+    description:
+      "Hands-on professional training in keyframing, timeline pacing, kinetic typography, cinematic color LUTs, and studio audio mastering.",
+    accentColor: "#a855f7",
   },
 ];
 
@@ -377,6 +330,25 @@ const CERTIFICATIONS_DATA: CertificationItem[] = [
 function AboutPage() {
   const [activeTool, setActiveTool] = useState<string | null>(null);
   const [cvModalOpen, setCvModalOpen] = useState(false);
+  const [uploadedPdfUrl, setUploadedPdfUrl] = useState<string | null>(null);
+  const [uploadedPdfName, setUploadedPdfName] = useState<string | null>(null);
+  const [activeCvView, setActiveCvView] = useState<"formatted" | "pdf">("formatted");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const isMobile = useIsMobile();
+
+  const handlePdfUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file && (file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf"))) {
+      const url = URL.createObjectURL(file);
+      setUploadedPdfUrl(url);
+      setUploadedPdfName(file.name);
+      setActiveCvView("pdf");
+    }
+  };
+
+  const handlePrintCV = () => {
+    window.print();
+  };
 
   const handleDownloadCV = () => {
     // Generate text/markdown formatted resume for direct download
@@ -508,31 +480,6 @@ COURSES & CERTIFICATIONS
               >
                 Sakibul Islam Sabbir &bull; Est. 2024
               </span>
-            </div>
-
-            {/*
-              REACT BITS <CircularCarousel /> COMPONENT:
-              Integrated directly above:
-              "Hi, I'm Sakibul Islam Sabbir — a passionate motion designer & video editor."
-            */}
-            <div className="max-w-5xl mx-auto my-8 sm:my-12 px-2 sm:px-4">
-              <div
-                style={{ width: "100%", height: "560px", position: "relative" }}
-                className="rounded-[32px] sm:rounded-[36px] border border-white/10 bg-white/[0.025] backdrop-blur-xl p-2 sm:p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden"
-              >
-                <CircularCarousel
-                  items={CAROUSEL_ITEMS}
-                  preset="cylinder"
-                  intro="rise"
-                  cardWidth={220}
-                  aspectRatio={1}
-                  gap={25}
-                  speed={14}
-                  captions
-                  fadeColor="#000000"
-                  cornerRadius={14}
-                />
-              </div>
             </div>
 
             {/* EXACT TITLE */}
@@ -703,7 +650,7 @@ COURSES & CERTIFICATIONS
               </div>
             </div>
 
-            {/* ACTION BUTTONS: See the Work, Get in Touch, Download CV */}
+            {/* ACTION BUTTONS: See the Work, View Full CV, Get in Touch, Download CV */}
             <div className="flex flex-wrap items-center justify-center gap-3.5 mb-16">
               <Button
                 asChild
@@ -714,6 +661,16 @@ COURSES & CERTIFICATIONS
                   See the Work
                   <ArrowUpRight className="ml-2" size={17} />
                 </Link>
+              </Button>
+
+              <Button
+                onClick={() => setCvModalOpen(true)}
+                variant="outline"
+                className="rounded-full px-6 py-5 text-sm font-bold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border-cyan-500/30 transition-all transform hover:-translate-y-0.5"
+                style={{ fontFamily: "'Tomato Grotesk', -apple-system, sans-serif" }}
+              >
+                <FileText className="mr-2" size={16} />
+                View Full CV
               </Button>
 
               <Button
@@ -955,6 +912,20 @@ COURSES & CERTIFICATIONS
                   );
                 })}
               </div>
+
+              {/* View Full Work History Trigger under Experience */}
+              <div className="mt-8 text-center">
+                <Button
+                  onClick={() => setCvModalOpen(true)}
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full px-5 py-2 text-xs font-bold bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+                  style={{ fontFamily: "'Tomato Grotesk', -apple-system, sans-serif" }}
+                >
+                  <Briefcase className="mr-2" size={14} />
+                  View Full Career History &amp; Client Highlights in CV
+                </Button>
+              </div>
             </div>
 
             {/* =========================================================================
@@ -981,7 +952,7 @@ COURSES & CERTIFICATIONS
               </div>
 
               {/* Education Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-[1000px] mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-[1140px] mx-auto">
                 {EDUCATION_DATA.map((edu) => (
                   <div
                     key={edu.id}
@@ -1023,6 +994,20 @@ COURSES & CERTIFICATIONS
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* View Full Resume Trigger under Education */}
+              <div className="mt-8 text-center">
+                <Button
+                  onClick={() => setCvModalOpen(true)}
+                  variant="outline"
+                  size="sm"
+                  className="rounded-full px-5 py-2 text-xs font-bold bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border-cyan-500/30"
+                  style={{ fontFamily: "'Tomato Grotesk', -apple-system, sans-serif" }}
+                >
+                  <FileText className="mr-2" size={14} />
+                  View Complete Resume &amp; Academic Timeline
+                </Button>
               </div>
             </div>
 
@@ -1145,6 +1130,280 @@ COURSES & CERTIFICATIONS
           Let’s connect <ArrowUpRight size={16} />
         </Link>
       </footer>
+
+      {/* Interactive CV Modal Dialog with Web View, PDF Preview, Print, and Download */}
+      <Dialog open={cvModalOpen} onOpenChange={setCvModalOpen}>
+        <DialogContent className="max-w-4xl max-h-[92vh] overflow-y-auto bg-neutral-950/95 border border-white/20 text-white backdrop-blur-2xl p-6 sm:p-8 rounded-[28px] sm:rounded-[36px] shadow-[0_25px_60px_rgba(0,0,0,0.8)]">
+          <DialogHeader className="border-b border-white/10 pb-5 mb-6 text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-xs font-mono font-bold uppercase tracking-wider text-emerald-400">
+                    Official Resume · Sakibul Islam Sabbir
+                  </span>
+                </div>
+                <DialogTitle
+                  className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight"
+                  style={{ fontFamily: "'Tomato Grotesk', -apple-system, sans-serif" }}
+                >
+                  Curriculum Vitae
+                </DialogTitle>
+                <p className="text-xs sm:text-sm text-neutral-400 mt-1">
+                  Motion Designer &amp; Video Editor · Bangladesh · 4+ Years Experience
+                </p>
+              </div>
+
+              {/* Quick Actions Header */}
+              <div className="flex flex-wrap items-center gap-2">
+                {uploadedPdfUrl && (
+                  <div className="flex rounded-full bg-white/10 p-1 border border-white/15 text-xs font-semibold">
+                    <button
+                      type="button"
+                      onClick={() => setActiveCvView("formatted")}
+                      className={`px-3 py-1 rounded-full transition-all ${
+                        activeCvView === "formatted"
+                          ? "bg-white text-black font-bold shadow"
+                          : "text-white/70 hover:text-white"
+                      }`}
+                    >
+                      Web View
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setActiveCvView("pdf")}
+                      className={`px-3 py-1 rounded-full transition-all ${
+                        activeCvView === "pdf"
+                          ? "bg-cyan-500 text-black font-bold shadow"
+                          : "text-white/70 hover:text-white"
+                      }`}
+                    >
+                      PDF View
+                    </button>
+                  </div>
+                )}
+
+                {/* Upload PDF Button */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="application/pdf,.pdf"
+                  className="hidden"
+                  onChange={handlePdfUpload}
+                />
+                <Button
+                  onClick={() => fileInputRef.current?.click()}
+                  size="sm"
+                  variant="outline"
+                  className="rounded-full bg-purple-500/10 hover:bg-purple-500/20 text-purple-300 border-purple-500/30 text-xs font-bold"
+                >
+                  <Upload size={14} className="mr-1.5" />
+                  {uploadedPdfName ? "Replace PDF" : "Attach PDF"}
+                </Button>
+
+                {/* Print / Save PDF Button */}
+                <Button
+                  onClick={handlePrintCV}
+                  size="sm"
+                  variant="outline"
+                  className="rounded-full bg-white/5 hover:bg-white/15 text-white border-white/20 text-xs font-bold"
+                >
+                  <Printer size={14} className="mr-1.5" />
+                  Print / PDF
+                </Button>
+
+                {/* Direct Download .TXT Button */}
+                <Button
+                  onClick={handleDownloadCV}
+                  size="sm"
+                  className="rounded-full bg-emerald-500 hover:bg-emerald-600 text-black text-xs font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+                >
+                  <Download size={14} className="mr-1.5" />
+                  Download .TXT
+                </Button>
+              </div>
+            </div>
+          </DialogHeader>
+
+          {/* Conditional View: Uploaded PDF vs Formatted Structured Resume */}
+          {activeCvView === "pdf" && uploadedPdfUrl ? (
+            <div className="space-y-4">
+              <div className="flex items-center justify-between text-xs text-neutral-400 bg-white/5 p-3 rounded-2xl border border-white/10">
+                <span className="flex items-center gap-2">
+                  <CheckCircle2 size={15} className="text-emerald-400" />
+                  Viewing uploaded PDF: <strong className="text-white">{uploadedPdfName}</strong>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setActiveCvView("formatted")}
+                  className="text-cyan-400 hover:underline font-semibold"
+                >
+                  Switch to formatted web resume &rarr;
+                </button>
+              </div>
+              <iframe
+                src={uploadedPdfUrl}
+                title="Uploaded CV PDF Document"
+                className="w-full h-[640px] rounded-2xl border border-white/20 bg-neutral-900"
+              />
+            </div>
+          ) : (
+            <div className="space-y-8 text-neutral-200 text-sm leading-relaxed">
+              {/* Profile Card */}
+              <div className="rounded-2xl p-5 sm:p-6 bg-white/[0.03] border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-1">Sakibul Islam Sabbir</h3>
+                  <p className="text-emerald-400 font-semibold text-xs sm:text-sm">
+                    Motion Designer, Commercial Video Editor &amp; Visual Storyteller
+                  </p>
+                  <div className="flex flex-wrap items-center gap-4 mt-3 text-xs text-neutral-400">
+                    <span className="flex items-center gap-1.5">
+                      <Mail size={13} className="text-neutral-500" /> sakibulislamsbmc@gmail.com
+                    </span>
+                    <span className="flex items-center gap-1.5">
+                      <ShieldCheck size={13} className="text-emerald-400" /> 100% Halal Creative
+                      Standard
+                    </span>
+                  </div>
+                </div>
+                <div className="shrink-0 text-left sm:text-right">
+                  <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-mono text-xs font-bold border border-emerald-500/40">
+                    Available for Contracts
+                  </span>
+                </div>
+              </div>
+
+              {/* Professional Summary */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2 flex items-center gap-2">
+                  <Sparkles size={14} /> Professional Summary
+                </h4>
+                <p className="text-neutral-300 text-sm sm:text-[15px] leading-relaxed">
+                  Passionate motion designer and commercial video editor with 4+ years of hands-on
+                  experience turning raw footage and rough briefs into high-retention videos
+                  audiences actually finish watching. Over 50+ satisfied local and international
+                  clients, delivering kinetic typography, commercial TVCs, viral vertical reels, and
+                  brand identity systems.
+                </p>
+              </div>
+
+              {/* Core Disciplines & Tools */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-3 flex items-center gap-2">
+                  <Layers size={14} /> Technical Stack &amp; Creative Tools
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                    <div className="font-bold text-white text-sm">After Effects</div>
+                    <div className="text-xs text-neutral-400 mt-1">
+                      Kinetic typography, 2D/3D visual effects, logo animations &amp; complex motion
+                      graphics.
+                    </div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                    <div className="font-bold text-white text-sm">Premiere Pro</div>
+                    <div className="text-xs text-neutral-400 mt-1">
+                      Story-driven timeline pacing, commercial cutting, sound design &amp; color
+                      grading.
+                    </div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                    <div className="font-bold text-white text-sm">CapCut &amp; AI Tools</div>
+                    <div className="text-xs text-neutral-400 mt-1">
+                      Ultra-fast viral reels, TikTok pacing, generative AI imagery, and 3D product
+                      renders.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Work Experience */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-4 flex items-center gap-2">
+                  <Briefcase size={14} /> Professional Experience
+                </h4>
+                <div className="space-y-4">
+                  {EXPERIENCE_DATA.map((exp) => (
+                    <div
+                      key={exp.id}
+                      className="p-4 sm:p-5 rounded-2xl bg-white/[0.025] border border-white/10 space-y-2"
+                    >
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs">
+                        <span className="font-mono text-neutral-400">{exp.period}</span>
+                        {exp.badge && (
+                          <span className="self-start sm:self-auto px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold uppercase text-[10px]">
+                            {exp.badge}
+                          </span>
+                        )}
+                      </div>
+                      <div className="font-bold text-white text-base">{exp.title}</div>
+                      <div className="text-xs font-semibold text-emerald-400">{exp.company}</div>
+                      <p className="text-xs text-neutral-300 leading-relaxed">{exp.summary}</p>
+                      <ul className="list-disc list-inside text-xs text-neutral-400 space-y-1 pt-1">
+                        {exp.bullets.map((b, bIdx) => (
+                          <li key={bIdx}>{b}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Education Background */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-4 flex items-center gap-2">
+                  <GraduationCap size={14} /> Education &amp; Academic Background
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {EDUCATION_DATA.map((edu) => (
+                    <div
+                      key={edu.id}
+                      className="p-4 sm:p-5 rounded-2xl bg-white/[0.025] border border-white/10 space-y-2"
+                    >
+                      <span className="font-mono text-cyan-400 text-xs font-bold bg-cyan-950/40 border border-cyan-500/30 px-2.5 py-0.5 rounded-full">
+                        {edu.period}
+                      </span>
+                      <div className="font-bold text-white text-sm pt-1">{edu.degree}</div>
+                      <div className="text-xs text-neutral-400 font-medium">{edu.institution}</div>
+                      <p className="text-xs text-neutral-300 leading-relaxed">{edu.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Certifications */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-wider text-purple-400 mb-3 flex items-center gap-2">
+                  <Award size={14} /> Professional Mentorships &amp; Certifications
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                  {CERTIFICATIONS_DATA.map((cert) => (
+                    <div
+                      key={cert.id}
+                      className="p-3.5 rounded-xl bg-white/5 border border-white/10 text-xs"
+                    >
+                      <span className="font-mono text-[10px] text-neutral-500">{cert.year}</span>
+                      <div className="font-bold text-white mt-1">{cert.title}</div>
+                      <div className="text-purple-300/80 mt-0.5">{cert.instructor}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Halal Standard Note */}
+              <div className="p-4 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-emerald-200/90 leading-relaxed flex items-start gap-3">
+                <ShieldCheck size={20} className="text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <strong className="text-emerald-300 block mb-1">Ethical Work Commitment</strong>
+                  All production strictly observes halal creative guidelines — rhythm and energy are
+                  sculpted using clean, halal sound design. I decline projects promoting betting,
+                  alcohol, or objectifying content.
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

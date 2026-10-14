@@ -1,0 +1,20 @@
+{
+  "id": "/",
+  "name": "Sakibul Islam - Video Editor & Motion Designer",
+  "short_name": "Sakib App",
+  "description": "Watch high-converting commercial video edits, 3D CGI visuals & design portfolio directly streaming on mobile.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#090d16",
+  "theme_color": "#090d16",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["portfolio", "entertainment", "productivity"]
+}

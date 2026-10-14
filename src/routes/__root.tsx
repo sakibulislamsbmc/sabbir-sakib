@@ -73,11 +73,24 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   );
 }
 
+import { MobileBottomNav } from "../components/site/mobile-bottom-nav";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      {
+        name: "viewport",
+        content:
+          "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover",
+      },
+      { name: "mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      {
+        name: "apple-mobile-web-app-status-bar-style",
+        content: "black-translucent",
+      },
+      { name: "theme-color", content: "#090d16" },
       { title: "Sabbir Sakib" },
       {
         name: "description",
@@ -94,6 +107,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "manifest", href: "/manifest.json" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       {
@@ -101,6 +115,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap",
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/favicon.ico" },
     ],
   }),
   shellComponent: RootShell,
@@ -115,7 +130,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning className="overflow-x-hidden antialiased">
         {children}
         <Scripts />
       </body>
@@ -129,7 +144,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="min-h-screen flex flex-col pb-20 md:pb-0">
+        <Outlet />
+      </div>
+      {/* Persistent Mobile Bottom Navigation Bar */}
+      <MobileBottomNav />
     </QueryClientProvider>
   );
 }

@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Search, Menu, X, ArrowUpRight, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sections, navItems } from "@/lib/site-sections";
+import { MobileAppHeader } from "./mobile-app-header";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,7 +37,11 @@ export function Header() {
 
   return (
     <>
-      <header className="site-header">
+      {/* Dedicated Native Mobile App Bar */}
+      <MobileAppHeader />
+
+      {/* Desktop Site Header */}
+      <header className="site-header hidden md:block">
         <div className="header-inner">
           {/* 1. Logo */}
           <Link
