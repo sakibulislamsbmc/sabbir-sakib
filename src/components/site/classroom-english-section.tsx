@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import CircularCarousel, { CarouselItem } from "@/components/ui/CircularCarousel";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { TestimonialsSection } from "@/components/site/testimonials-section";
 
 // Video Project Thumbnails
 import video1Podcast from "@/assets/portfolio-projects/video-1-podcast.jpg";
@@ -890,6 +891,14 @@ export function ClassroomEnglishSection() {
             />
           </div>
         </div>
+
+        {/*
+          TESTIMONIALS SECTION:
+          Positioned below the Circular Carousel section.
+          Features transparent Plasma-style "frosted glass" rounded rectangles,
+          and continuous right-to-left train scrolling.
+        */}
+        <TestimonialsSection />
       </div>
 
       {/* Video Project Booking / Inquiry Dialog */}

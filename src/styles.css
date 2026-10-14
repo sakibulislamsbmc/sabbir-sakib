@@ -1642,6 +1642,29 @@ a {
   scrollbar-width: none;
 }
 
+/* ==========================================================================
+   Continuous Right-to-Left Train Scrolling for Testimonials
+   ========================================================================== */
+@keyframes testimonialsTrainScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333333%);
+  }
+}
+
+.animate-testimonials-train {
+  animation: testimonialsTrainScroll 40s linear infinite;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .animate-testimonials-train {
+    animation-duration: 30s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -1653,4 +1676,5 @@ a {
     transition: none !important;
   }
 }
+
 
